@@ -50,7 +50,7 @@ public final class DownCommand extends AbstractCommand<DownCommandResult> {
     }
 
     protected void collectCommandLineArguments(List<String> arguments) {
-        getRemoveImagesOfType().ifPresent(rmi -> { arguments.add("--rmi"); arguments.add("\"" + rmi + "\""); });
+        getRemoveImagesOfType().ifPresent(rmi -> { arguments.add("--rmi"); arguments.add(rmi.toString()); });
         if (isRemoveVolumes()) {
             arguments.add("--volumes");
         }
