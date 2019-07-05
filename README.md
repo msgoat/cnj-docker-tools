@@ -1,6 +1,10 @@
-# cnj-k8s-tools
+# cnj-docker-tools
 
-Set of tools to integrate Kubernetes tools into Maven builds.
+Set of tools to integrate Docker tools into Maven builds.
 
 ## Status
-![Build status](https://drone.at.automotive.msg.team/api/badges/cloudtrain/cnj-k8s-tools/status.svg)
+![Build status](https://drone.at.automotive.msg.team/api/badges/cloudtrain/cnj-docker-tools/status.svg)
+
+## Plugin compose-maven-plugin
+
+Plugin to run docker-compose in Maven builds. Please refer to the [plugin documentation](compose-maven-plugin/README.md) for documenation.
