@@ -8,7 +8,7 @@
 	<modules>
         <module>cnj-docker-tools-compose</module>
 		<module>compose-maven-plugin</module>
-        <module>compose-maven-plugin-test</module>
+        <!-- <module>compose-maven-plugin-test</module> -->
     </modules>
     <properties>
         <!-- make sure everyone is using Java 8 -->
