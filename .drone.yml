@@ -5,7 +5,7 @@ name: cnj-docker-tools-build
 
 steps:
   - name: commit-stage
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-build-java8
+    image: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-drone-build-java8
     privileged: true
     commands:
       - start-docker.sh
