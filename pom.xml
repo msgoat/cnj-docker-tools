@@ -14,7 +14,7 @@
         <!-- make sure everyone is using Java 8 -->
         <java.version>1.8</java.version>
         <slf4j.version>1.7.26</slf4j.version>
-        <log4j.version>2.11.2</log4j.version>
+        <log4j.version>2.13.3</log4j.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- all text-based resources are UTF-8 encoded -->
