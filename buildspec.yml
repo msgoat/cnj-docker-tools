@@ -18,6 +18,12 @@ phases:
       - aws s3 cp s3://s3-eu-west-1-cloudtrain-codebuild-shared/.mvn/settings.xml /root/.m2/settings.xml
       - echo "Authenticate on DockerHub"
       - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PAT
+      - echo "Check docker version"
+      - docker version
+      - echo "Check docker-compose version"
+      - docker-compose version
+      - echo "Check support of docker compose command"
+      - docker compose
   build:
     on-failure: ABORT
     commands:
