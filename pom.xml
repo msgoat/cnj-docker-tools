@@ -11,10 +11,14 @@
         <!-- <module>compose-maven-plugin-test</module> -->
     </modules>
     <properties>
+        <!-- new Maven version management -->
+        <revision>4.0.0</revision>
+        <sha1></sha1>
+        <changelist></changelist>
         <!-- make sure everyone is using Java 8 -->
         <java.version>11</java.version>
-        <slf4j.version>1.7.26</slf4j.version>
-        <log4j.version>2.13.3</log4j.version>
+        <slf4j.version>1.7.32</slf4j.version>
+        <log4j.version>2.17.1</log4j.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- all text-based resources are UTF-8 encoded -->
@@ -36,10 +40,6 @@
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
         <!-- pinning versions of application type specific maven plugins -->
         <!-- pinning versions of cloud native specific maven plugins -->
-        <!-- new Maven version management -->
-        <revision>3.0.0</revision>
-        <sha1></sha1>
-        <changelist></changelist>
     </properties>
     <dependencyManagement>
         <dependencies>

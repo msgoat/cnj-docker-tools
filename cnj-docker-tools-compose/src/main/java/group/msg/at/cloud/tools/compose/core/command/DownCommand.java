@@ -17,6 +17,7 @@ public final class DownCommand extends AbstractCommand<DownCommandResult> {
     private RemoveImageTypes removeImagesOfType;
     private boolean removeVolumes;
     private boolean removeOrphans;
+
     public DownCommand() {
         super();
     }
@@ -49,8 +50,11 @@ public final class DownCommand extends AbstractCommand<DownCommandResult> {
         this.removeOrphans = removeOrphans;
     }
 
-    protected void collectCommandLineArguments(List<String> arguments) {
-        getRemoveImagesOfType().ifPresent(rmi -> { arguments.add("--rmi"); arguments.add(rmi.toString()); });
+    private void collectCommandLineArguments(List<String> arguments) {
+        getRemoveImagesOfType().ifPresent(rmi -> {
+            arguments.add("--rmi");
+            arguments.add(rmi.toString());
+        });
         if (isRemoveVolumes()) {
             arguments.add("--volumes");
         }
@@ -66,7 +70,8 @@ public final class DownCommand extends AbstractCommand<DownCommandResult> {
         ResultParser parsingConsumer = new ResultParser();
         Consumer<String> compositeConsumer = loggingConsumer.andThen(parsingConsumer);
         List<String> arguments = new ArrayList<>();
-        arguments.add("docker-compose");
+        arguments.add("docker");
+        arguments.add("compose");
         arguments.add("down");
         collectCommandLineArguments(arguments);
         this.logger.info("running command: " + String.join(" ", arguments));
@@ -82,7 +87,7 @@ public final class DownCommand extends AbstractCommand<DownCommandResult> {
     private static final class ResultParser implements Consumer<String> {
 
         private CommandStatusCode statusCode;
-        private List<String> statusMessageParts = new ArrayList<>();
+        private final List<String> statusMessageParts = new ArrayList<>();
 
         public DownCommandResult parse() {
             DownCommandResult result = new DownCommandResult();

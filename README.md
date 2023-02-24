@@ -4,7 +4,7 @@ Set of tools to integrate Docker tools into Maven builds.
 
 ## Status
 
-[![Build Status](https://drone.cloudtrain.aws.msgoat.eu/api/badges/msgoat/cnj-docker-tools/status.svg)](https://drone.cloudtrain.aws.msgoat.eu/msgoat/cnj-docker-tools)
+![Build Status](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoibGU3a1kzclpnWW5lNWhLSGhWZFd3S0tuRmEzWmlOVDUwSWx4MEJzc2YremxJVDdBc05QWUFma3lsMTZTd1hUcU1vbWlmdTMxbkNNZmEveGgzMzJGZmVVPSIsIml2UGFyYW1ldGVyU3BlYyI6IlhUY3pZV2k1NFRjcFg5TE0iLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
 
 ## Release information
 

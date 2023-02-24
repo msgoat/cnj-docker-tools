@@ -16,7 +16,7 @@ public final class LogsCommand extends AbstractCommand<LogsCommandResult> {
 
     private boolean noColor = true;
     private boolean follow = true;
-    private List<String> loggedServices = new ArrayList<>();
+    private final List<String> loggedServices = new ArrayList<>();
 
     public LogsCommand() {
         super();
@@ -50,12 +50,12 @@ public final class LogsCommand extends AbstractCommand<LogsCommandResult> {
         this.loggedServices.addAll(loggedServices);
     }
 
-    protected void collectCommandLineArguments(List<String> arguments) {
-        if (isNoColor()) {
-            arguments.add("--no-color");
-        }
+    private void collectCommandLineArguments(List<String> arguments) {
         if (isFollow()) {
             arguments.add("--follow");
+        }
+        if (isNoColor()) {
+            arguments.add("--no-color");
         }
         this.loggedServices.forEach(s -> arguments.add(s));
     }
@@ -66,7 +66,8 @@ public final class LogsCommand extends AbstractCommand<LogsCommandResult> {
         ResultParser parsingConsumer = new ResultParser();
         Consumer<String> compositeConsumer = loggingConsumer.andThen(parsingConsumer);
         List<String> arguments = new ArrayList<>();
-        arguments.add("docker-compose");
+        arguments.add("docker");
+        arguments.add("compose");
         arguments.add("logs");
         collectCommandLineArguments(arguments);
         this.logger.info("running command: " + String.join(" ", arguments));
@@ -87,7 +88,7 @@ public final class LogsCommand extends AbstractCommand<LogsCommandResult> {
     private static final class ResultParser implements Consumer<String> {
 
         private CommandStatusCode statusCode;
-        private List<String> statusMessageParts = new ArrayList<>();
+        private final List<String> statusMessageParts = new ArrayList<>();
 
         public LogsCommandResult parse() {
             LogsCommandResult result = new LogsCommandResult();

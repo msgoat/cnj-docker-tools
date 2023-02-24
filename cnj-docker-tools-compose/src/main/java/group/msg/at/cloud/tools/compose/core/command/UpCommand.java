@@ -40,11 +40,11 @@ public final class UpCommand extends AbstractCommand<UpCommandResult> {
         this.noColor = noColor;
     }
 
-    protected void collectCommandLineArguments(List<String> arguments) {
+    private void collectCommandLineArguments(List<String> arguments) {
         if (isDetached()) {
             arguments.add("--detach");
         } else {
-            this.logger.warn("docker-compose up will be run in blocking mode, which will block your Maven build! Are you sure you want to do this? If not, consider using the detached flag!");
+            this.logger.warn("docker compose up will be run in blocking mode, which will block your Maven build! Are you sure you want to do this? If not, consider using the detached flag!");
         }
         if (isNoColor()) {
             arguments.add("--no-color");
@@ -58,7 +58,8 @@ public final class UpCommand extends AbstractCommand<UpCommandResult> {
         ResultParser parsingConsumer = new ResultParser();
         Consumer<String> compositeConsumer = loggingConsumer.andThen(parsingConsumer);
         List<String> arguments = new ArrayList<>();
-        arguments.add("docker-compose");
+        arguments.add("docker");
+        arguments.add("compose");
         arguments.add("up");
         collectCommandLineArguments(arguments);
         this.logger.info("running command: " + String.join(" ", arguments));
@@ -69,7 +70,7 @@ public final class UpCommand extends AbstractCommand<UpCommandResult> {
     private static final class ResultParser implements Consumer<String> {
 
         private CommandStatusCode statusCode;
-        private List<String> statusMessageParts = new ArrayList<>();
+        private final List<String> statusMessageParts = new ArrayList<>();
 
         public UpCommandResult parse() {
             UpCommandResult result = new UpCommandResult();

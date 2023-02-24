@@ -4,9 +4,9 @@
  */
 package group.msg.at.cloud.tools.compose.maven.test.tools.compose.maven;
 
+import group.msg.at.cloud.tools.compose.core.command.CommandStatusCode;
 import group.msg.at.cloud.tools.compose.core.command.UpWithLogsCommand;
 import group.msg.at.cloud.tools.compose.core.command.UpWithLogsCommandResult;
-import group.msg.at.cloud.tools.compose.core.command.CommandStatusCode;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -20,7 +20,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 public final class UpWithLogsMojo extends AbstractComposeMojo {
 
     @Parameter(property = "compose.noColor", defaultValue = "true", readonly = true, required = false)
-    protected boolean noColor;
+    private boolean noColor;
 
     /**
      * @see org.apache.maven.plugin.Mojo#execute()

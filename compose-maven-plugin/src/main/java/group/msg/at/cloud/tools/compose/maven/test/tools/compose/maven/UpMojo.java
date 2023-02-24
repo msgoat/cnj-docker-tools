@@ -19,7 +19,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 public final class UpMojo extends AbstractComposeMojo {
 
     @Parameter(property = "compose.noColor", defaultValue = "true", readonly = true, required = false)
-    protected boolean noColor;
+    private boolean noColor;
 
     /**
      * @see org.apache.maven.plugin.Mojo#execute()

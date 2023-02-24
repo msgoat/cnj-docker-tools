@@ -19,13 +19,13 @@ import org.apache.maven.plugins.annotations.Parameter;
 public final class DownMojo extends AbstractComposeMojo {
 
     @Parameter(property = "compose.removeImagesOfType", readonly = true, required = false)
-    protected DownCommand.RemoveImageTypes removeImagesOfType;
+    private DownCommand.RemoveImageTypes removeImagesOfType;
 
     @Parameter(property = "compose.removeOrphans", defaultValue = "false", readonly = true, required = false)
-    protected boolean removeOrphans;
+    private boolean removeOrphans;
 
     @Parameter(property = "compose.removeVolumes", defaultValue = "false", readonly = true, required = false)
-    protected boolean removeVolumes;
+    private boolean removeVolumes;
 
     /**
      * @see org.apache.maven.plugin.Mojo#execute()
