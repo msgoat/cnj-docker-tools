@@ -8,8 +8,10 @@ env:
 phases:
   install:
     on-failure: ABORT
-    runtime-versions:
-      docker: 20
+    commands:
+      - echo "Install docker compose plugin"
+      - sudo apt-get update
+      - sudo apt-get install docker-compose-plugin
   pre_build:
     on-failure: ABORT
     commands:
