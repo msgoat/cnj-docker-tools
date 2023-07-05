@@ -8,8 +8,8 @@ Maven-Plugin for running `docker compose` commands in Maven Builds.
 
 | Requirement | Constraint                                    |
 | --- |-----------------------------------------------|
-| JDK | 11                                          |
-| Maven | 3.5                                           |
+| JDK | 17                                            |
+| Maven | 3.8+                                          |
 | docker | Must be installed and must be visible in PATH |
  
 ### Usage
@@ -63,7 +63,7 @@ This snippet demonstrates how to run containers in the __pre-integration-test__ 
 | --- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | up | Runs __docker compose up__ with a specified docker-compose file                                                                                                                                                                                                    |
 | down | Runs __docker compose down__ with a specified docker-compose file                                                                                                                                                                                                 |
-| upWithLogs | Runs __docker compose up --detach__ in detached mode and automatically attaches to all running containers to follow their log output using __docker-compose logs --follow__. *This is the preferred goal for running containers for system tests in Maven builds.* 
+| upWithLogs | Runs __docker compose up --detach__ in detached mode and automatically attaches to all running containers to follow their log output using __docker-compose logs --follow__. *This is the preferred goal for running containers for system tests in Maven builds.* | 
 
 #### Parameters
 

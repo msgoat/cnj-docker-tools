@@ -2,6 +2,8 @@ version: 0.2
 
 env:
   secrets-manager:
+    NEXUS_USER: "cloudtrain-codebuild-nexus:user"
+    NEXUS_PASSWORD: "cloudtrain-codebuild-nexus:password"
     DOCKERHUB_USER: "cloudtrain-codebuild-dockerhub:docker-user"
     DOCKERHUB_PAT: "cloudtrain-codebuild-dockerhub:docker-pat"
 
@@ -9,11 +11,17 @@ phases:
   install:
     on-failure: ABORT
     commands:
+      - echo "Check docker version"
+      - docker version
+      - echo "Check docker-compose version"
+      - docker-compose version
       - echo "Install docker compose plugin"
       - DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
       - mkdir -p $DOCKER_CONFIG/cli-plugins
       - curl -SL https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
       - chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+      - echo "Check docker compose plugin version"
+      - docker compose version
   pre_build:
     on-failure: ABORT
     commands:
@@ -22,12 +30,6 @@ phases:
       - aws s3 cp s3://s3-eu-west-1-cloudtrain-codebuild-shared/.mvn/settings.xml /root/.m2/settings.xml
       - echo "Authenticate on DockerHub"
       - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PAT
-      - echo "Check docker version"
-      - docker version
-      - echo "Check docker-compose version"
-      - docker-compose version
-      - echo "Check docker compose plugin version"
-      - docker compose version
   build:
     on-failure: ABORT
     commands:

@@ -1,6 +1,6 @@
 /*
- * at41-tools-kubectl-maven-plugin:AbstractComposeMojo.java
- * (c) Copyright msg systems ag Automotive Technology 2019
+ * compose-maven-plugin:AbstractComposeMojo.java
+ * (c) Copyright msg systems ag Automotive Technology & Manufacturing 2019 - 2023
  */
 package group.msg.at.cloud.tools.compose.maven.test.tools.compose.maven;
 
@@ -19,7 +19,7 @@ import java.io.File;
  */
 public abstract class AbstractComposeMojo extends AbstractMojo {
 
-    @Parameter(defaultValue = "${project.build.directory}", readonly = true, required = false)
+    @Parameter(defaultValue = "${project.build.directory}", readonly = false, required = false)
     protected File target;
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
@@ -28,10 +28,10 @@ public abstract class AbstractComposeMojo extends AbstractMojo {
     @Parameter(defaultValue = "${session}", required = true, readonly = true)
     protected MavenSession session;
 
-    @Parameter(property = "compose.file", required = true, readonly = true)
+    @Parameter(property = "compose.file", required = true, readonly = false)
     protected File composeFile;
 
-    @Parameter(property = "compose.debug", defaultValue = "false", readonly = true, required = false)
+    @Parameter(property = "compose.debug", defaultValue = "false", readonly = false, required = false)
     protected boolean debug;
 
     protected void info(String msg) {

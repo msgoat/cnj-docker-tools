@@ -1,5 +1,5 @@
 /*
- * at41-tools-kubectl-maven-plugin:UpMojo.java
+ * compose-maven-plugin:UpMojo.java
  * (c) Copyright msg systems ag Automotive Technology 2017
  */
 package group.msg.at.cloud.tools.compose.maven.test.tools.compose.maven;
@@ -18,13 +18,13 @@ import org.apache.maven.plugins.annotations.Parameter;
 @Mojo(name = "down", requiresProject = true)
 public final class DownMojo extends AbstractComposeMojo {
 
-    @Parameter(property = "compose.removeImagesOfType", readonly = true, required = false)
+    @Parameter(property = "compose.removeImagesOfType", readonly = false, required = false)
     private DownCommand.RemoveImageTypes removeImagesOfType;
 
-    @Parameter(property = "compose.removeOrphans", defaultValue = "false", readonly = true, required = false)
+    @Parameter(property = "compose.removeOrphans", defaultValue = "false", readonly = false, required = false)
     private boolean removeOrphans;
 
-    @Parameter(property = "compose.removeVolumes", defaultValue = "false", readonly = true, required = false)
+    @Parameter(property = "compose.removeVolumes", defaultValue = "false", readonly = false, required = false)
     private boolean removeVolumes;
 
     /**

@@ -1,5 +1,5 @@
 /*
- * at41-tools-kubectl-maven-plugin:UpMojo.java
+ * compose-maven-plugin:UpMojo.java
  * (c) Copyright msg systems ag Automotive Technology 2017
  */
 package group.msg.at.cloud.tools.compose.maven.test.tools.compose.maven;
@@ -18,7 +18,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 @Mojo(name = "up", requiresProject = true)
 public final class UpMojo extends AbstractComposeMojo {
 
-    @Parameter(property = "compose.noColor", defaultValue = "true", readonly = true, required = false)
+    @Parameter(property = "compose.noColor", defaultValue = "true", readonly = false, required = false)
     private boolean noColor;
 
     /**

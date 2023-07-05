@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2023-07-05
+### Changed
+- upgraded to Java 17
+- upgraded all dependencies
+- made all configurable plugin parameters writable to remove build warning messages
+
 ## [4.0.0] - 2023-02-24
 ### Changed
 - switched from `docker-compose` standalone command to `docker compose` command of the docker CLI to be able to provide new compose features out-of-the-box. 
