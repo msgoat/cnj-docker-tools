@@ -86,8 +86,8 @@ public final class DownCommand extends AbstractCommand<DownCommandResult> {
 
     private static final class ResultParser implements Consumer<String> {
 
-        private CommandStatusCode statusCode;
         private final List<String> statusMessageParts = new ArrayList<>();
+        private CommandStatusCode statusCode;
 
         public DownCommandResult parse() {
             DownCommandResult result = new DownCommandResult();

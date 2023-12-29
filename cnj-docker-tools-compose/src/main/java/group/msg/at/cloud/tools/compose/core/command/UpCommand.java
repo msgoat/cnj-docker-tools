@@ -69,8 +69,8 @@ public final class UpCommand extends AbstractCommand<UpCommandResult> {
 
     private static final class ResultParser implements Consumer<String> {
 
-        private CommandStatusCode statusCode;
         private final List<String> statusMessageParts = new ArrayList<>();
+        private CommandStatusCode statusCode;
 
         public UpCommandResult parse() {
             UpCommandResult result = new UpCommandResult();

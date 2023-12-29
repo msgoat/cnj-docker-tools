@@ -32,23 +32,27 @@ public final class DownMojo extends AbstractComposeMojo {
      */
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        DownCommand down = new DownCommand(new Slf4jMavenLogAdapter(getLog()));
-        down.setComposeFile(this.composeFile);
-        if (this.removeImagesOfType != null) {
-            down.setRemoveImagesOfType(this.removeImagesOfType);
-        }
-        down.setRemoveOrphans(this.removeOrphans);
-        down.setRemoveVolumes(this.removeVolumes);
-        DownCommandResult result = null;
-        try {
-            result = down.call();
-        } catch (Exception ex) {
-            throw new MojoExecutionException(String.format("Failed to stop and cleanup all containers in %s", this.composeFile), ex);
-        }
-        if (CommandStatusCode.FAILURE.equals(result.getStatusCode())) {
-            String msg = String.format("Failed to stop and cleanup all containers in [%s]: %s %s", this.composeFile, result.getStatusCode(), result.getStatusMessage());
-            error(msg);
-            throw new MojoExecutionException(msg);
+        if (!this.skip) {
+            DownCommand down = new DownCommand(new Slf4jMavenLogAdapter(getLog()));
+            down.setComposeFile(this.composeFile);
+            if (this.removeImagesOfType != null) {
+                down.setRemoveImagesOfType(this.removeImagesOfType);
+            }
+            down.setRemoveOrphans(this.removeOrphans);
+            down.setRemoveVolumes(this.removeVolumes);
+            DownCommandResult result = null;
+            try {
+                result = down.call();
+            } catch (Exception ex) {
+                throw new MojoExecutionException(String.format("Failed to stop and cleanup all containers in %s", this.composeFile), ex);
+            }
+            if (CommandStatusCode.FAILURE.equals(result.getStatusCode())) {
+                String msg = String.format("Failed to stop and cleanup all containers in [%s]: %s %s", this.composeFile, result.getStatusCode(), result.getStatusMessage());
+                error(msg);
+                throw new MojoExecutionException(msg);
+            }
+        } else {
+            info("Skipping execution");
         }
     }
 }

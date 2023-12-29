@@ -15,7 +15,7 @@ import java.io.File;
  * Common base implementation of all Mojos running Docker Compose.
  *
  * @author theism
- * @version 1.0
+ * @version 2.0
  */
 public abstract class AbstractComposeMojo extends AbstractMojo {
 
@@ -33,6 +33,9 @@ public abstract class AbstractComposeMojo extends AbstractMojo {
 
     @Parameter(property = "compose.debug", defaultValue = "false", readonly = false, required = false)
     protected boolean debug;
+
+    @Parameter(property = "compose.skip", defaultValue = "false", readonly = false, required = false)
+    protected boolean skip;
 
     protected void info(String msg) {
         getLog().info(msg);

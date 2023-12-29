@@ -14,9 +14,9 @@ import java.util.function.Consumer;
  */
 public final class LogsCommand extends AbstractCommand<LogsCommandResult> {
 
+    private final List<String> loggedServices = new ArrayList<>();
     private boolean noColor = true;
     private boolean follow = true;
-    private final List<String> loggedServices = new ArrayList<>();
 
     public LogsCommand() {
         super();
@@ -87,8 +87,8 @@ public final class LogsCommand extends AbstractCommand<LogsCommandResult> {
 
     private static final class ResultParser implements Consumer<String> {
 
-        private CommandStatusCode statusCode;
         private final List<String> statusMessageParts = new ArrayList<>();
+        private CommandStatusCode statusCode;
 
         public LogsCommandResult parse() {
             LogsCommandResult result = new LogsCommandResult();

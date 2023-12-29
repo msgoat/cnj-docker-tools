@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.1.0] - 2023-12-29
+### Added
+- Added new parameter `skip`.
+
 ## [5.0.0] - 2023-07-05
 ### Changed
 - upgraded to Java 17

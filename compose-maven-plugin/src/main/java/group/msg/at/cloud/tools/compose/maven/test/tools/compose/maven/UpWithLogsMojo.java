@@ -27,19 +27,23 @@ public final class UpWithLogsMojo extends AbstractComposeMojo {
      */
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        UpWithLogsCommand upWithLogs = new UpWithLogsCommand(new Slf4jMavenLogAdapter(getLog()));
-        upWithLogs.setNoColor(this.noColor);
-        upWithLogs.setComposeFile(this.composeFile);
-        UpWithLogsCommandResult result = null;
-        try {
-            result = upWithLogs.call();
-        } catch (Exception ex) {
-            throw new MojoExecutionException(String.format("Failed to run all containers in %s", this.composeFile), ex);
-        }
-        if (CommandStatusCode.FAILURE.equals(result.getStatusCode())) {
-            String msg = String.format("Failed to run all containers in [%s]: %s %s", this.composeFile, result.getStatusCode(), result.getStatusMessage());
-            error(msg);
-            throw new MojoExecutionException(msg);
+        if (!this.skip) {
+            UpWithLogsCommand upWithLogs = new UpWithLogsCommand(new Slf4jMavenLogAdapter(getLog()));
+            upWithLogs.setNoColor(this.noColor);
+            upWithLogs.setComposeFile(this.composeFile);
+            UpWithLogsCommandResult result = null;
+            try {
+                result = upWithLogs.call();
+            } catch (Exception ex) {
+                throw new MojoExecutionException(String.format("Failed to run all containers in %s", this.composeFile), ex);
+            }
+            if (CommandStatusCode.FAILURE.equals(result.getStatusCode())) {
+                String msg = String.format("Failed to run all containers in [%s]: %s %s", this.composeFile, result.getStatusCode(), result.getStatusMessage());
+                error(msg);
+                throw new MojoExecutionException(msg);
+            }
+        } else {
+            info("Skipping execution");
         }
     }
 }

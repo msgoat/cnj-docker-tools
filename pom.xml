@@ -12,7 +12,7 @@
     </modules>
     <properties>
         <!-- new Maven version management -->
-        <revision>5.0.0</revision>
+        <revision>5.1.0</revision>
         <sha1></sha1>
         <changelist></changelist>
         <!-- general properties -->
